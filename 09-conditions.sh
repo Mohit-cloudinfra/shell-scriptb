@@ -6,11 +6,11 @@ read n
 # -eq equal
 # -ne not equal
 
-if [$n -gt 20]; then
+if [ $n -gt 20 ]; then
     echo "$n is greater"
-elif [$n -lt 20]; then
+elif [ $n -lt 20 ]; then
     echo "$n is lesser"
-elif [$n -eq 20]; then
+elif [ $n -eq 20 ]; then
     echo "equal"
 fi
 
