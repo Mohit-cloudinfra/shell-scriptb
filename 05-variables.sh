@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#read is like scan and read -s means youdont see what you are typing
 
 echo "enter username"
 read user

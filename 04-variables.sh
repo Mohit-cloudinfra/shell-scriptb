@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#like it will take like arguments if you pass the argunets it will replace those other wise it prints empyt
 p1=$1
 p2=$2
 echo "$p1:hello $p2 how are you"
