@@ -11,3 +11,6 @@ sleep 100 &
 #this will go into background
 echo "pid of recently exrecuted bcakground process is $!"
 echo "alll args passed to script is $*"
+
+
+#$@ takes arguments seprately $* takes them all like one
