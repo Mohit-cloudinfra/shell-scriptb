@@ -1,14 +1,36 @@
 #!/bin/bash
 
-u=$(id -u)
+USERID=$(id -u)
 
-if [ $u -ne 0 ]; then
-    echo "user is not root"
+if [ $USERID -ne 0 ]; then
+    echo "Please run this script with root user access"
     exit 1
 fi
-dnf install ngindddx -y
+
+echo "Installing Nginx"
+dnf install nginx -y
 
 if [ $? -ne 0 ]; then
-    echo "there is failure"
+    echo "Installing Nginx ... FAILURE"
     exit 1
+else
+    echo "Installing Nginx ... SUCCESS"
+fi
+
+dnf install mysql -y
+
+if [ $? -ne 0 ]; then
+    echo "Installing MySQL ... FAILURE"
+    exit 1
+else
+    echo "Installing MySQL ... SUCCESS"
+fi
+
+dnf install nodejs -y
+
+if [ $? -ne 0 ]; then
+    echo "Installing nodejs ... FAILURE"
+    exit 1
+else
+    echo "Installing nodejs ... SUCCESS"
 fi
