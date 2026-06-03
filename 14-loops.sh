@@ -19,13 +19,19 @@ VALIDATE(){
     fi
 }
 
-echo "Installing Nginx"
-dnf install nginx -y &>> $logs
-VALIDATE $? "nginx installation"
+# echo "Installing Nginx"
+# dnf install nginx -y &>> $logs
+# VALIDATE $? "nginx installation"
 
 
-dnf install mysql -y &>> $logs
-VALIDATE $? "mysql installation"
+# dnf install mysql -y &>> $logs
+# VALIDATE $? "mysql installation"
 
-dnf install nodejs -y &>> $logs
-VALIDATE $? "nodejs installation"
+# dnf install nodejs -y &>> $logs
+# VALIDATE $? "nodejs installation"
+
+for i in $@
+do
+    dnf install $i -y &>> $logs
+    VALIDATE $? "$i installation"
+done
