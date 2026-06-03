@@ -7,12 +7,12 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+mkdir -p "/var/log/shell-script"
+
 if [ $USERID -ne 0 ]; then
     echo -e "$R Please run this script with root user access $N" | tee -a $logs
     exit 1
 fi
-
-mkdir -p "/var/log/shell-script"
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
