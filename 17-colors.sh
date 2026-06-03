@@ -2,9 +2,13 @@
 
 USERID=$(id -u)
 logs="/var/log/shell-script/$0.log"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
 if [ $USERID -ne 0 ]; then
-    echo "Please run this script with root user access" | tee -a $logs
+    echo -e "$R Please run this script with root user access $N" | tee -a $logs
     exit 1
 fi
 
@@ -12,10 +16,10 @@ mkdir -p "/var/log/shell-script"
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
-        echo "$2 ... FAILURE" | tee -a $logs
+        echo -e "$2 ... $R FAILURE $N" | tee -a $logs
         exit 1
     else
-        echo "$2 ... SUCCESS" | tee -a $logs
+        echo -e "$2 ... $G SUCCESS $N" | tee -a $logs
     fi
 }
 
@@ -38,6 +42,6 @@ do
         dnf install $i -y &>> $logs
         VALIDATE $? "$i installation"
     else
-        echo "$i already installed skipping"
+        echo -e "$i already installed $Y skipping $N"
     fi
 done
