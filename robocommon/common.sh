@@ -104,7 +104,7 @@ install_java(){
 	cd /app
 	mvn clean package
 	mv target/shipping-1.0.jar shipping.jar
-	check $? "wahtever the hell happend while installing javva idont knwo what happend but whateever"
+	check $? "Building shipping with maven"
 }
 
 load_sql(){

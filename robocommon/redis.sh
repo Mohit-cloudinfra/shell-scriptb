@@ -10,7 +10,8 @@ install_certain "redis" "7"
 sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis/redis.conf &>>$LOGS_FILE
 check $? "Allowing remote connections"
 
-sed -i 's/"protected mode yes"/"protected mode no/g' /etc/redis/redis.conf &>>$LOGS_FILE
+sed -i '/protected-mode/ c protected-mode no' /etc/redis/redis.conf &>>$LOGS_FILE
+grep -q '^protected-mode no' /etc/redis/redis.conf
 check $? "Disabled protected mode"
 
 enable_start "redis"
